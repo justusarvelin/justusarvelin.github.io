@@ -1,4 +1,12 @@
 body{
 	/* this is the outermost element on your page*/
 	background: yellow;
+	font-family: 'VanDijk';
+	font-size: 100px;
+}
+
+@font-face{
+	font-family: 'VanDijk';
+	src: url('fonts/VanDijkBd.woff2') format('woff2');
+	font-weight: 400;
 }
