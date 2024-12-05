@@ -1,42 +1,37 @@
-/* Reset styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 20px;
-    overflow: auto; /* Allow scrolling if grid exceeds screen size */
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Grid container */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr); /* 12 columns */
-    grid-template-rows: repeat(20, auto); /* 20 rows */
-    grid-gap: 10px; /* Gap between items */
-    width: 90%; /* Full-width grid container */
-    max-width: 1200px; /* Optional max-width */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
 }
 
-/* Grid items */
-.grid-item {
-    background-color: #0073e6;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    height: 50px; /* Height of each item */
-    text-align: center;
-    border: 1px solid #ccc;
+
+.row {margin: 0 -5px;}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+.box {
+  padding: 1rem;
+  text-align: left;
+  background-color: #f1f1f1;
 }
