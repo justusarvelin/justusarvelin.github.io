@@ -1,12 +1,19 @@
 body{
 	/* this is the outermost element on your page*/
-	background: yellow;
-	font-family: 'VanDijk';
-	font-size: 100px;
+	background: white;
+	font-family: 'NoCommercialPotential-Regular';
+	font-size: 48px;
+	color: darkgray;
+	padding-left: 60px;
+	padding-bottom: 100px
+}
+
+a{
+	color: pink;
 }
 
 @font-face{
-	font-family: 'VanDijk';
-	src: url('fonts/VanDijkBd.woff2') format('woff2');
-	font-weight: 400;
+	font-family: 'NoCommercialPotential-Regular';
+	src: url('fonts/NoCommercialPotential-Regular.woff2') format('woff2');
+	font-weight: 250;
 }
