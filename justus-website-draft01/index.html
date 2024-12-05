@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/favicon.png"/>
-    <link rel="preload" href="77Sans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="font/NoCommercialPotential-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
@@ -22,12 +22,12 @@
 
 
         <div class="layout">
-		<p >Follow me being me (Justus) on <a href="http://instagram.com/kisujusu">Instagram</a> or send greetings &#47; booking/work enquiries  &#47; whatnot to my <a href="mailto:hello@justjust.fi">E-Mail</a>. Let's get down to business!  &#9742;</h2>
-		</p>
-
-        <p>During the day I do graphic design focusing on type, publications and so on, and at night I deejay. And do the two thingies intersect? Yes, biiig time.<br>
-        
-        </p>
+	 <p class="tiny"> Justus is a graphic designer specializing in publications and typography, with a strong interest in art direction and illustration. He has studied at both Aalto University and the School of Visual Arts in New York. Justus is a part of <em>Noin Seitsemän</em>, a collective which won the Best Publication of the Year award at Vuoden Huiput, Finland’s premier visual communication design gala. The award was for their work on three issues of the <em>Tuli & Savu</em> poetry magazine. Justus co-designed the issue <em>Pyhä</em> with Emma Tahvanainen. Currently, he is <mark>available for freelance projects</mark>.</p>
+ <br> <br>
+    <p class="tiny">Outside of graphic design, Justus is also a resident DJ at Club Kaiku in Helsinki, where he’s known for his humor and energetic sets. In his own words, he's "one of the funniest DJs ever to come out of Helsinki." All the past and upcoming gigs are listed on his <a class="tiny" style="padding: 0;" style="padding: 0;" style="text-decoration-thickness: 3px; text-underline-offset: 4px; color: yellow;" target=" _blank" href="https://soundcloud.com/justusarvelin">SoundCloud</a>. For booking inquiries, email <a class="tiny" style="padding: 0;" style="text-decoration-thickness: 3px; text-underline-offset: 4px; color: yellow;" target=" _blank" href="mailto: hello@justjust.fi" >hello@justjust.fi</a></p>
+ <br> <br>
+   <p class="tiny">Yippee ki-yay and bye bye!</p>
+    <br>
         </div>
 
 		<h2 class="layout heading"><br>Graphic dijon (design) works! &#9997;</h2>
@@ -112,13 +112,6 @@
                     <p>
        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1830522987&color=%230d1c0d&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/justusarvelin" title="Justus Arvelin" target="_blank" style="color: #cccccc; text-decoration: none;"></a><a href="https://soundcloud.com/justusarvelin/hitoshi-justus-test-pressing-51" title="Hitoshi &amp; Justus, Test Pressing #51" target="_blank" style="color: #cccccc; text-decoration: none;"></a></div>
     </p>
-      	
-        	<p>&#10114; The disco rushing trough me blood at <a href="https://on.soundcloud.com/V1Xbw">Flow festival 23&#39;</a>
-
-                    <p>
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1600832517&color=%232c2a2a&auto_play=true&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/justusarvelin" title="Justus Arvelin" target="_blank" style="color: #cccccc; text-decoration: none;"></a><a href="https://soundcloud.com/justusarvelin/justus-arvelin-at-flow-festival-backyard" title="Justus Arvelin at Backyard, Flow Festival" target="_blank" style="color: #cccccc; text-decoration: none;"></a></div>
-    </p>
-
 
     <p>&#x2783; For the early birds putting on make up on a Friyay <a href="https://on.soundcloud.com/quCQk">listen to this!</a>
 
@@ -132,26 +125,19 @@
 
 </main>
 
+<script>
+    function getRandomTilt() {
+      return Math.floor(Math.random() * 21) - 10; // Random number between -10 and +10
+    }
 
-<div class="gradient-background"></div>
-
-    <script src="script.js">
-       
-    </script>
-
-        <script type="module">
-      const downloads = document.querySelectorAll("a[download]");
-      for (let d of downloads) {
-        const title = d.getAttribute("data-title");
-        if (gtag) {
-          gtag("event", "download", {
-            item: title,
-          });
-        }
-      }
-    </script>
-
-
+    window.onload = function() {
+      const elements = document.querySelectorAll('p, a'); // Select all 'p' and 'a' tags
+      elements.forEach(function(element) {
+        const randomTilt = getRandomTilt();
+        element.style.transform = 'rotate(' + randomTilt + 'deg)';
+      });
+    };
+  </script>
     
 </body>
 </html>
