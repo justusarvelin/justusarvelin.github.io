@@ -28,7 +28,7 @@ body {
   min-height: 100%;
   margin: 0;
   color: var(--color-text);
-  font-family: '77 Sans';
+  font-family: 'NoCommercialPotential-Regular';
     font-weight: normal;
     font-style: normal;
     font-size: 14px;
@@ -74,7 +74,7 @@ h1{
 }
 
 p {
-  font-family: '77 Sans';
+  font-family: 'NoCommercialPotential-Regular';
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
