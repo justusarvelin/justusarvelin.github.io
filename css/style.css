@@ -3,13 +3,13 @@ body{
 	background: white;
 	font-family: 'NoCommercialPotential-Regular';
 	font-size: 48px;
-	color: darkgray;
+	color: white;
 	padding-left: 60px;
 	padding-bottom: 100px
 }
 
 a{
-	color: pink;
+	color: blue;
 }
 
 @font-face{
