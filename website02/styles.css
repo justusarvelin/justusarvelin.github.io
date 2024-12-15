@@ -15,72 +15,63 @@ body, html {
 #pagebody{
     overflow: scroll;
 }
-.circle-container {
+.container {
     position: absolute;
-    top: 40%;
+    top: 20%;
     left: 50%;
     height: 50px;
     width: 50px;
-    transform: translate(-106%, -100%);
+    transform: translate(-100%, -100%);
 }
 
 .tbt{
     left: 50%;
 }
+
 .text {
-    position: absolute;
+   position: absolute;
+    z-index: 0;
     width: 100px;
-    height: 100px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;   
+    font-size: 14px;
     font-family: 'NoCommercialPotential-Regular';
 }
+
+
+
+.text:nth-child(1) { transform: translate(0px, 60px); 
+    mark {background: hotpink!important}}
+.text:nth-child(2) { transform: translate(0px, 100px); 
+    mark {background: yellow!important}}
+.text:nth-child(3) { transform: translate(0px, 140px) ; 
+    mark {background: greenyellow;!important}}
+.text:nth-child(4) { transform: translate(0px, 180px) ; 
+    mark {background: aqua;!important}}
+
 
 .center-text {
     position: absolute;
-    top: 50%;
+    mark {background: lightgray;!important}
+    top: 10%;
     left: 50%;
-    transform: translate(0%, -10%);
+    transform: translate(-50%, 0%);
     font-size: 14px;
-    font-weight: normal;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    opacity: 1; /* Initially hide */
     font-family: 'NoCommercialPotential-Regular';
-
-}
-
-.center-text2 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-15%, -10%);
-    font-size: 14px;
-    font-weight: normal;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     color: white;
-    mark {background: red!important}
-    opacity: 1; /* Initially hide */
-    font-family: 'NoCommercialPotential-Regular';
+    z-index: 100; /* Ensure it's on top */
+    cursor: grab;
+    width: auto;
+    height: auto;
+    background: transparent; /* Transparent background for better visuals */
+    transition: top 0.1s, left 0.1s; /* Smooth movement */
 }
 
-.center-text3 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-30%, -10%);
-    font-size: 14px;
-    font-weight: normal;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    opacity: 1; /* Initially hide */
-    font-family: 'NoCommercialPotential-Regular';
+.center-text:active {
+    cursor: grabbing;
 }
 
 .centerstick{
@@ -105,15 +96,14 @@ body, html {
     height: 300px;
     max-height: 30%;
     transform: translate(-50%, 0%);
-/*    padding: 10px;*/
 }
 
 .headimg{
     left: 50%;
-/*    height: 300px;*/
     max-height: 30%;
     padding-top: 10px;
-    max-width: 300px;
+    max-width: 400px;
+    align-items: center;
 }
 
 .information{
@@ -123,7 +113,7 @@ body, html {
     max-height: 30%;
     height: 25%;
     text-align: center;
-    transform: translate(-50%, 0%);
+    transform: translate(-50%, -20%);
     font-family: 'NoCommercialPotential-Regular';
     font-size: 14px;
 }
@@ -131,36 +121,83 @@ body, html {
 .year{
     position: fixed;
     bottom: 0%;
-    left: 50%;
-    text-align: center;
+    left: 0%;
+    text-align: left;
     transform: translate(-40%, 0%);
+    mark {background: lightgray;!important}
     font-style: normal;
     font-family: 'NoCommercialPotential-Regular';
     font-size: 14px;
 }
 
+.menu{
+  mark {background: lightgray;!important}
+  z-index: 100;
+  transform: translate(0%, 200%);
+  bottom: 25%;
+  position: fixed;
+}
+
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
 a{
     text-decoration: none;
-    color: black;
+    color: saddlebrown;
 }
 
 a:hover{
-    color: blue;
+    color: black;
 }
 
 table, th, {
-    width: 100%;
+    width: 400px;
     font-size: 14px;
     margin-top: 10px;
-    max-width: 300px;
+    max-width: 400px;
 }
 
 td {
     font-size: 14px;
     border:1px solid black;
     margin-top: 10px;
-    max-width: 300px;
+    width: 400px;
+    text-align: left;
+    padding-left: 1%;
+}
+
+
+#td1 {
+    font-size: 14px;
+    border:1px solid black;
+    margin-top: 10px;
+    max-width: 400px;
     background-color: yellow;
+    text-align: left;
+    padding-right: 1%;
+}
+
+#td2 {
+    font-size: 14px;
+    border:1px solid black;
+    margin-top: 10px;
+    max-width: 400px;
+    background-color: yellow;
+    text-align: left;
+    padding-right: 1%;
+}
+
+#type {
+    font-size: 14px;
+    border:1px solid black;
+    margin-top: 10px;
+    max-width: 400px;
+    background-color: aqua;
+    text-align: left;
+    padding-right: 1%;
 
 }
 
@@ -168,7 +205,7 @@ td {
     font-size: 14px;
     border:1px solid black;
     margin-top: 10px;
-    max-width: 300px;
+    max-width: 400px;
     background-color: black;
     color: yellow;
 }
@@ -176,10 +213,29 @@ td {
 .centerbody{
     display: flex;
     justify-content: center;
+    align-items: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2.50%;
+    max-width: 400px;
+    flex-direction: column;
+    font-family: 'NoCommercialPotential-Regular';
+    font-size: 14px;
+}
+
+.paragraphscnd{
+    text-indent: 25%;
+}
+
+.bodyheader{
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+    padding-bottom: 2.5%;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    max-width: 300px;
+    max-width: 400px;
     flex-direction: column;
     font-family: 'NoCommercialPotential-Regular';
     font-size: 14px;
@@ -200,13 +256,31 @@ td {
 .logcaption{
     font-size: 14px;
     padding: 5px;
-    /*padding-top: 0px;*/
     font-family: 'NoCommercialPotential-Regular';
 }
 
 ol{
     margin: 0;
 }
+
+#info{
+     mark {background: hotpink;!important}
+}
+
+#dj{
+     mark {background: yellow;!important}
+}
+
+#works{
+     mark {background: greenyellow;!important}
+}
+
+#typeprjct{
+     mark {background: aqua;!important}
+}
+
+
+
 
 
 /*COMMENTS STYLING*/
@@ -216,19 +290,12 @@ ol{
 }
 
 #disqus_thread{
-    width: 300px !important;
+    width: 400px !important;
 }
 
 .disqus-footer__wrapper--refresh{
     display: none;
 }
-
-
-
-.text:nth-child(1) { transform: rotate(270deg) translate(100px) rotate(-270deg); }
-.text:nth-child(2) { transform: rotate(90deg) translate(100px) rotate(-90deg); }
-.text:nth-child(3) { transform: rotate(0deg) translate(100px) rotate(0deg); }
-.text:nth-child(4) { transform: rotate(180deg) translate(100px) rotate(-180deg); }
 
 
 @media only screen and (max-width: 768px) {
@@ -241,18 +308,6 @@ ol{
     font-weight: normal;
     font-family: 'NoCommercialPotential-Regular';
 }
-
-.text {
-    position: absolute;
-    transform-origin: center;
-    transition: box-shadow 0.3s ease-out; /* Smooth fade-out for shadow */
-}
-
-.shadow-trace {
-    box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.5);
-}
-
-
 
 
 
