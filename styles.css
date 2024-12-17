@@ -13,12 +13,12 @@ body, html {
 
 @font-face {
     font-family: 'No Commercial Potential';
-    src: url('NoCommercialPotential-Regular.eot');
-    src: url('NoCommercialPotential-Regular.eot?#iefix') format('embedded-opentype'),
-        url('NoCommercialPotential-Regular.woff2') format('woff2'),
-        url('NoCommercialPotential-Regular.woff') format('woff'),
-        url('NoCommercialPotential-Regular.ttf') format('truetype'),
-        url('NoCommercialPotential-Regular.svg#NoCommercialPotential-Regular') format('svg');
+    src: url('font/NoCommercialPotential-Regular.eot');
+    src: url('font/NoCommercialPotential-Regular.eot?#iefix') format('embedded-opentype'),
+        url('font/NoCommercialPotential-Regular.woff2') format('woff2'),
+        url('font/NoCommercialPotential-Regular.woff') format('woff'),
+        url('font/NoCommercialPotential-Regular.ttf') format('truetype'),
+        url('font/NoCommercialPotential-Regular.svg#NoCommercialPotential-Regular') format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
