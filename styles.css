@@ -386,7 +386,7 @@ img {
     .headimg1 {
         position: fixed;
         left: 50%;
-        height: 300px;
+        height: 260px;
         max-height: 30%;
         transform: translate(-50%, 0%);
     }
@@ -395,7 +395,7 @@ img {
         left: 50%;
         max-height: 30%;
         padding-top: 10px;
-        max-width: 300px;
+        max-width: 260px;
         align-items: center;
     }
 
@@ -436,17 +436,17 @@ img {
     }
 
     table, th {
-        width: 200px;
+        width: 260px;
         font-size: 14px;
         margin-top: 10px;
-        max-width: 200px;
+        max-width: 260px;
     }
 
     td {
         font-size: 14px;
         border: 1px solid black;
         margin-top: 10px;
-        width: 200px;
+        width: 260px;
         text-align: left;
         padding-left: 1%;
     }
@@ -479,7 +479,7 @@ img {
         font-size: 14px;
         border: 1px solid black;
         margin-top: 10px;
-        max-width: 200px;
+        max-width: 260px;
         background-color: yellow;
         text-align: left;
         padding-right: 1%;
@@ -489,7 +489,7 @@ img {
         font-size: 14px;
         border: 1px solid black;
         margin-top: 10px;
-        max-width: 200px;
+        max-width: 260px;
         background-color: yellow;
         text-align: left;
         padding-right: 1%;
@@ -499,7 +499,7 @@ img {
         font-size: 14px;
         border: 1px solid black;
         margin-top: 10px;
-        max-width: 200px;
+        max-width: 260px;
         background-color: aqua;
         text-align: left;
         padding-right: 1%;
@@ -518,7 +518,7 @@ img {
         margin-left: auto;
         margin-right: auto;
         padding-top: 2.50%;
-        max-width: 200px;
+        max-width: 260px;
         flex-direction: column;
         font-family: 'NoCommercialPotential-Regular';
         font-size: 14px;
@@ -536,7 +536,7 @@ img {
         align-items: center;
         margin-left: auto;
         margin-right: auto;
-        max-width: 200px;
+        max-width: 260px;
         flex-direction: column;
         font-family: 'NoCommercialPotential-Regular';
         font-size: 14px;
@@ -609,5 +609,9 @@ img {
     color: black;
 }
 
+p {
+    max-width: 260;
+    width: 100%;
+}
 }
 
