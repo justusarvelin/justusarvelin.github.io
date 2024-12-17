@@ -1,4 +1,4 @@
-    const rotatingText = document.getElementById('rotatingText');
+ const rotatingText = document.getElementById('rotatingText');
     const toggleButton = document.getElementById('toggleButton');
 
     let isRotating = true;
