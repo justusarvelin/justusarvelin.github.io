@@ -1,47 +1,713 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="assets/favicon.png" />
-    <title>JUSTUS ARVELIN</title>
-    <link rel="preload" href="NoCommercialPotential-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Justus Arvelin</title>
+
+<style>
+:root {
+--content-width: 75%;
+--content-max: 1400px;
+--gutter: 12px;
+}
+
+  @media (min-width: 1200px) {
+    :root { --gutter: 26px; }
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --content-width: 94%;
+      --gutter: 26px;
+    }
+  }
+
+  /* ---------- BASE ---------- */
+  body {
+    font-family: Helvetica, sans-serif;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  /* ---------- LINKS ---------- */
+  a {
+    color: inherit;
+    text-decoration: underline;
+    transition: font-weight 0.2s ease;
+  }
+
+  a:hover { font-weight: bold; }
+
+  /* ---------- DESCRIPTION ---------- */
+  .site-description {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+    padding: 18px var(--gutter);
+    font-size: 24px;
+    border-bottom: 0.1px solid #000;
+    text-align: left;
+  }
+
+  /* ---------- TOP NAV ---------- */
+
+  .top-nav {
+  margin: 0px 0 18px;
+  border-bottom: 0.5px solid #000;
+  padding: 18px var(--gutter);
+  text-align: left;              /* align left like site description */
+}
+
+.top-nav button {
+  border: 0.5px solid #000000;
+  border-radius: 3px;
+  font-size: 18px;
+  padding: 6px 14px;
+  margin-right: 24px;
+  cursor: pointer;
+}
+
+/* hover like subtle UI */
+.top-nav button:hover {
+  background: #eeeeee;
+}
+
+/* active = like pressed / selected */
+.top-nav button.active {
+  background: #6666;
+  border-color: #000;
+}
+
+  /* ---------- SECTIONS ---------- */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .section .content p {
+  max-width: 75ch;
+}
+
+  /* ---------- IMAGE ---------- */
+
+.canvas {
+  width: --content-width;
+  max-width: --content-width;
+  padding: 18px var(--gutter);
+  margin: 0 auto 40px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+    margin-top: 0;
+}
+
+  .canvas img.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+.canvas {
+  display: grid;
+  gap: 12px;
+}
+
+/* IMAGE GRID DEFAULT (DESKTOP) */
+.canvas.grid-multi {
+  grid-template-columns: repeat(8, 1fr); /* up to 8 images per row */
+}
+
+/* MOBILE: fewer per row, more rows */
+@media (max-width: 640px) {
+  .canvas.grid-multi {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
+  }
+}
+
+
+.canvas img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.canvas img.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.canvas img {
+  cursor: zoom-in;
+}
+
+/* Expanded image mode */
+.canvas img.expanded {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  max-width: 95vw;
+  max-height: 95vh;
+  width: auto;
+  height: auto;
+  z-index: 9999;
+  background: #fff;
+  cursor: zoom-out;
+  box-shadow: 0 0 0 100vmax rgba(0,0,0,1);
+  transition: none;
+}
+
+
+  /* ---------- TIMELINE ---------- */
+.timeline-block {
+  margin-bottom: 26px;
+  text-align: left;
+}
+
+.timeline-tab {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: inherit;
+  border: 0.5px solid #000;
+   border-radius: 3px;
+  padding: 6px 6px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+@media (max-width: 480px) {
+  .timeline-block {
+    padding: 0 20px;
+  }
+}
+
+  .timeline-panel {
+    border: 0.5px solid #000;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  .timeline-panel.collapsed {
+    display: none;
+  }
+
+  .timeline-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .timeline-table tr {
+    border-bottom: 0.5px solid #000;
+  }
+
+.timeline-table td {
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 6px 6px 3px 6px;
+}
+
+  .timeline-panel,
+.timeline-panel table,
+.timeline-panel td {
+  font-family: monospace;
+}
+
+  /* ---------- TEXT ---------- */
+  .work-text,
+  .section p {
+    margin-top: 0px;
+    margin-bottom: 4px;
+    text-align: left;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+.work-text {
+  max-width: 90ch;
+}
+
+  .work-text.active,
+  .section.active p {
+    opacity: 1;
+  }
+
+  /* ---------- CONTROLS ---------- */
+  .controls {
+    margin-bottom: 8px;
+  }
+
+  .controls label {
+    margin: 8px 14px;
+    font-size: 24px;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  @media (max-width: 640px) {
+    body { font-size: 22px; }
+    .top-nav button { font-size: 22px; }
+    .controls label { font-size: 22px; }
+  }
+
+.content {
+  width: --content-width;
+  max-width: v--content-width;
+  margin: 0 auto;
+ padding: 6px var(--gutter);
+  box-sizing: border-box;
+}
+
+  /* ---------- MORE ---------- */
+
+.dj-embed {
+  width: 100%;
+  margin-bottom: 20px;
+    padding-top: 26x;
+}
+
+.dj-embed iframe {
+  width: 100%;
+  display: block;
+}
+
+.soundcloud-meta {
+  font-size: 10px;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+</style>
 </head>
 
 <body>
 
-    <div class="center-text">
-        <a href="index.html"><mark>JUSTUS'<br>CLASS<br>SITE</mark></a>
-    </div>
+<div class="site-description">
+  Justus Arvelin is a graphic designer, illustrator, DJ, and a few other things, who lives and works in Helsinki.
+  Get in <a href="mailto:justus.arvelin@gmail.com">touch</a>.
+  <img alt="new" src="hymiö.gif" width="225" style="margin-bottom:-6px"/>
+</div>
 
-    <div class="container">
-        <div class="text" id="info" data-hover-text="Text 1">
-            <a href="poster-exercise/index.html"><mark>POSTER</mark></a>
-        </div>
-        <div class="text" id="discjocking" data-hover-text="Text 2">
-            <a href="toggle-exercise/index.html"><mark>TOGGLE</mark></a>
-        </div>
-        <div class="text" id="works" data-hover-text="Text 3">
-            <a href="semantic-markup/index.html"><mark>SEMANTIC</mark></a>
-        </div>
-        <div class="text" id="typeproject" data-hover-text="Text 4">
-            <a href="typeproject.html"><mark>TYPEFACE</mark></a>
-        </div>
-    </div>
+<div class="top-nav">
+  <button class="nav-btn active" data-section="works">Works</button>
+  <button class="nav-btn" data-section="info">Info</button>
+  <button class="nav-btn" data-section="djing">DJing</button>
+</div>
 
-    <p class="information">
-        Place of Origin<br>Helsinki, Finland<br><br>
-        Contact Info<br>
-        <a href="mailto:justus.arvelin@gmail.com">justus.arvelin@gmail.com</a><br><br>
-        Online Presence<br>
-        <a href="https://www.instagram.com/kisujusu/">@kisujusu</a><br>
+<!-- WORKS -->
+<div id="works" class="section active">
+
+  <!-- Work selector buttons -->
+  <div class="controls">
+    <label><input type="radio" name="work" checked onclick="setWork(1)"> 001</label>
+    <label><input type="radio" name="work" onclick="setWork(2)"> 002</label>
+    <label><input type="radio" name="work" onclick="setWork(3)"> 003</label>
+    <label><input type="radio" name="work" onclick="setWork(4)"> 004</label>
+    <label><input type="radio" name="work" onclick="setWork(5)"> 005</label>
+    <label><input type="radio" name="work" onclick="setWork(6)"> 006</label>
+    <label><input type="radio" name="work" onclick="setWork(7)"> 007</label>
+    <label><input type="radio" name="work" onclick="setWork(8)"> 008</label>
+    <label><input type="radio" name="work" onclick="setWork(9)"> 009</label>
+    <label><input type="radio" name="work" onclick="setWork(10)"> 010</label>
+  </div>
+
+  <!-- Work description -->
+  <div class="content">
+    <div id="text" class="work-text active">
+      Work 1 — Description text goes here.
+    </div>
+  </div>
+
+  <!-- Image grid -->
+  <div class="canvas" id="canvas"></div>
+</div>
+
+
+<!-- INFO -->
+<div id="info" class="section">
+  <div class="content">
+    <p>Justus is a graphic designer working across publications and typography, with a strong interest in art direction and illustration. He studied Visual Communication Design at Aalto University and spent part of his Bachelor's degree at the School of Visual Arts in New York.
+<br><br>
+He currently works as a graphic designer and producer at Post Bar, and as a production graphic designer for Solstice Festival. His work has been recognized with the Vuoden Huiput award for Best Publication as part of a group of classmates and was nominated at ADCE ’24 in the editorial and student design categories for three issues of the poetry magazine Tuli & Savu.
+<br><br>
+In addition to commercial work, he is also working on a new community platform called No Commercial Potential, aiming to organize events, release music and whatnot...</p>
+  </div>
+</div>
+
+<!-- DJING -->
+<div id="djing" class="section">
+  <div class="content">
+    <p>
+      Alongside graphic design, Justus organizes events and performs as a DJ. He is a resident at Post Bar and has played in recent years at Flow Festival and New York’s LOT Radio. All the guestmixes and recordings from his sets can be found on his <a href="https://soundcloud.com/justusarvelin">SoundCloud</a>. For booking inquiries, email: <a href="mailto: justus.arvelin@gmail.com" >justus.arvelin@gmail.com</a>
     </p>
+<br>
+  <div class="dj-embed">
+    <iframe 
+      width="100%" 
+      height="166" 
+      scrolling="no" 
+      frameborder="no" 
+      allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1911590285&color=%23000000&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+    </iframe>
+    <div class="soundcloud-meta">
+      <a href="https://soundcloud.com/thelotradio" target="_blank"></a> 
+      <a href="https://soundcloud.com/thelotradio/honey-trap-with-justus-arvelin-the-lot-radio-09-05-2024" target="_blank">
+      </a>
+  </div>
+</div>
 
-    <script src="script.js"></script>
+    <div class="timeline-block">
+      <button class="timeline-tab" id="toggleTimeline">
+        Upcoming and previous gigs
+        <span id="timelineArrow">▼</span>
+      </button>
+
+
+      <div id="timelinePanel" class="timeline-panel collapsed">
+        <table class="timeline-table">
+<tr><td>19.12.25</td><td>Serious Fun, Post Bar w/ ChewChew, Hitoshi</td></tr>
+<tr><td>18.12.25</td><td>500 Kaveria / PUS Pikkujoulut</td></tr>
+<tr><td>05.12.25</td><td>Siltanen w/ Jaakko Rintala, Juuso Tervo & Hitoshi</td></tr>
+<tr><td>20.11.25</td><td>Post Bar w/ Hitoshi & Sianza</td></tr>
+<tr><td>07.11.25</td><td>Kaiku w/ Hitoshi</td></tr>
+<tr><td>17.10.25</td><td>Siltanen w/ Hitoshi</td></tr>
+<tr><td>10.10.25</td><td>Serious Fun, Post Bar w/ djfix & Jek, Hitoshi</td></tr>
+<tr><td>20.09.25</td><td>Stidilä w/ Hitoshi</td></tr>
+<tr><td>30.08.25</td><td>Serious Fun, Post Bar w/ Seth & Mike, Hitoshi</td></tr>
+<tr><td>29.08.25</td><td>500 Kaveria Viikonloppu, R4</td></tr>
+<tr><td>24.08.25</td><td>VUM Open Air</td></tr>
+<tr><td>19.07.25</td><td>Serious Fun, Post Bar w/ Naone, Sansibar, Hitoshi</td></tr>
+<tr><td>10.07.25</td><td>Way Bakery w/ Hitoshi</td></tr>
+<tr><td>13.06.25</td><td>Siltanen w/ Hitoshi</td></tr>
+<tr><td>08.06.25</td><td>VUM, Ääniwalli</td></tr>
+<tr><td>06.06.25</td><td>Post Bar 7 Years</td></tr>
+<tr><td>01.06.25</td><td>PUS & No.Com.Pot</td></tr>
+<tr><td>31.05.25</td><td>Echoes Radio, DWSC w/ Hitoshi</td></tr>
+<tr><td>30.04.25</td><td>Post Bar Vappu Marathon</td></tr>
+<tr><td>12.04.25</td><td>Serious Fun, Post Bar w/ Amelia Holt, Second Contact, Hitoshi</td></tr>
+<tr><td>01.04.25</td><td>Amos Rex Exhibition Opening</td></tr>
+<tr><td>06.03.25</td><td>Post Bar Is A Bar w/ Joni DJ & Denzel</td></tr>
+<tr><td>01.03.25</td><td>Let Me Wine Festival</td></tr>
+<tr><td>14.02.25</td><td>Kaiku w/ Simone De Kunovich, Hitoshi</td></tr>
+<tr><td>07.02.25</td><td>Pluto</td></tr>
+<tr><td>24.01.25</td><td>Post Bar w/ Hitoshi</td></tr>
+<tr><td>04.01.25</td><td>Siltanen w/ Hitoshi</td></tr>
+<tr><td>28.12.24</td><td>Harju8 w/ Jaakko Rintala</td></tr>
+<tr><td>27.12.24</td><td>Kaiku w/ Hanna Ojanen & Hitoshi</td></tr>
+<tr><td>25.12.24</td><td>Torven Jouludisko w/ Jaakko & Touko</td></tr>
+<tr><td>11.12.24</td><td>ChessHeads NYC, L&SD Loft, NY</td></tr>
+<tr><td>08.12.24</td><td>Nightmoves w/ Amelia Holt & Second Contact, NY</td></tr>
+<tr><td>29.11.24</td><td>Cafe Balearica, NY</td></tr>
+<tr><td>24.11.24</td><td>Million Goods, New York</td></tr>
+<tr><td>18.11.24</td><td>Kiosk Radio w/ Honey Trap</td></tr>
+<tr><td>08.11.24</td><td>Le Bain w/ Mike Guimmond & DJ Steaw, New York</td></tr>
+<tr><td>15.09.24</td><td>Nightmoves w/ Budino, New York</td></tr>
+<tr><td>05.09.24</td><td>LOT Radio w/ Honey Trap, New York</td></tr>
+<tr><td>11.08.24</td><td>Flow Festival w/ Hitoshi</td></tr>
+<tr><td>10.08.24</td><td>Sex Tales & Cocktails</td></tr>
+<tr><td>03.08.24</td><td>Summer Wedding gig &lt;3</td></tr>
+<tr><td>19.07.24</td><td>Siltanen w/ Hitoshi</td></tr>
+<tr><td>18.07.24</td><td>Torjantai</td></tr>
+<tr><td>13.07.24</td><td>Sex Tales & Cocktails</td></tr>
+<tr><td>11.07.24</td><td>Torjantai</td></tr>
+<tr><td>07.07.24</td><td>VUM, Ääniwalli w/ Inner City, Joni DJ, DJ Ender, Essi Eirene & Siquiche</td></tr>
+<tr><td>04.07.24</td><td>Torjantai</td></tr>
+<tr><td>27.06.24</td><td>Torjantai</td></tr>
+<tr><td>15.06.24</td><td>Sex Tales & Cocktails</td></tr>
+<tr><td>14.06.24</td><td>IDA Community service, Typö</td></tr>
+<tr><td>04.06.24</td><td>Karhu Dancing Club, Siltanen w/ Hitoshi</td></tr>
+<tr><td>01.06.24</td><td>KBC Taproom w/ Hitoshi, Turku</td></tr>
+<tr><td>31.05.24</td><td>Kaiku w/ Hitoshi & Make A Dance</td></tr>
+<tr><td>25.05.24</td><td>Test Pressing 51, Ääniwalli w/ Hitoshi</td></tr>
+<tr><td>23.05.24</td><td>Helsinki Playground Event w/ Hitoshi</td></tr>
+<tr><td>23.05.24</td><td>Torjantai</td></tr>
+<tr><td>11.05.24</td><td>Sex Tales & Cocktails</td></tr>
+<tr><td>30.04.24</td><td>Seremonia, Ääniwalli</td></tr>
+<tr><td>20.04.24</td><td>Kaiku w/ Maria Wesander, DJ WUF & Hitoshi</td></tr>
+<tr><td>05.04.24</td><td>Kult, Helsinki</td></tr>
+<tr><td>26.03.24</td><td>Amos Rex, Helsinki</td></tr>
+<tr><td>22.03.24</td><td>Localization w/ DJ WUF, Ääniwalli</td></tr>
+<tr><td>09.03.24</td><td>Operator Radio, Rotterdam</td></tr>
+<tr><td>26.01.24</td><td>Kaiku w/ Hitoshi & livwutang</td></tr>
+<tr><td>25.01.24</td><td>Kuudes Linja w/ Stella & Longos</td></tr>
+<tr><td>13.01.24</td><td>Sex Tales & Cocktails</td></tr>
+<tr><td>06.01.24</td><td>Post Bar w/ Hitoshi & DJ Aleksi</td></tr>
+<tr><td>08.01.23</td><td>Sex Tales & Cocktails</td></tr>
+<tr><td>15.01.23</td><td>Stidilä w/ Hitoshi</td></tr>
+<tr><td>28.01.23</td><td>Siltanen w/ Olesia & Hitoshi</td></tr>
+<tr><td>05.02.23</td><td>Sex Tales & Cocktails</td></tr>
+<tr><td>05.03.23</td><td>Sex Tales & Cocktails w/ Iivari</td></tr>
+<tr><td>31.03.23</td><td>Kaiku w/ Ima Iduozee & Louise Chen</td></tr>
+<tr><td>02.04.23</td><td>Sex Tales & Cocktails</td></tr>
+<tr><td>06.04.23</td><td>Torjantai w/ SomBadi, Hitoshi, DJ JVS, DJ WUF & Olesia</td></tr>
+<tr><td>15.04.23</td><td>Bar Runar w/ HiToshi</td></tr>
+<tr><td>29.04.23</td><td>Pyhä Aisti w/ Hitoshi</td></tr>
+<tr><td>30.04.23</td><td>Pyhä Aisti w/ Hitoshi</td></tr>
+<tr><td>01.05.23</td><td>Aalto ARTS Open Air, Helsinki</td></tr>
+<tr><td>04.05.23</td><td>Torjantai</td></tr>
+<tr><td>05.05.23</td><td>Kaiku 10 Years Birthday</td></tr>
+<tr><td>06.05.23</td><td>Sex Tales & Cocktails</td></tr>
+<tr><td>26.05.23</td><td>Turku Modern Festival w/ Hitoshi, Turku</td></tr>
+<tr><td>28.05.23</td><td>VUM Open Air 10 Years w/ Hitoshi</td></tr>
+<tr><td>04.06.23</td><td>Sex Tales & Cocktails</td></tr>
+<tr><td>08.06.23</td><td>Torjantai</td></tr>
+<tr><td>10.06.23</td><td>Tanner 5 Years Birthday</td></tr>
+<tr><td>15.06.23</td><td>Torjantai</td></tr>
+<tr><td>16.06.23</td><td>Tirra, Lahti</td></tr>
+<tr><td>13.07.23</td><td>Torjantai</td></tr>
+<tr><td>15.07.23</td><td>Kaiku w/ Hitoshi & Eric Duncan</td></tr>
+<tr><td>22.07.23</td><td>Open Air</td></tr>
+<tr><td>30.07.23</td><td>PUS Restaurant Pop Up</td></tr>
+<tr><td>04.08.23</td><td>KBC Taproom w/ Hitoshi, Turku</td></tr>
+<tr><td>10.08.23</td><td>Torjantai, Kaiku w/ Hitoshi, DJ WUF, Hanna Ojanen & Tereza</td></tr>
+<tr><td>11.08.23</td><td>Flow Festival</td></tr>
+<tr><td>12.08.23</td><td>Sex Tales & Cocktails Anniversary</td></tr>
+<tr><td>02.09.23</td><td>Post Bar w/ DJ Aleksi & Suski</td></tr>
+<tr><td>09.09.23</td><td>Sex Tales & Cocktails</td></tr>
+<tr><td>12.09.23</td><td>Helsinki Design Week</td></tr>
+<tr><td>14.10.23</td><td>Kaiku w/ Mäi-Linh</td></tr>
+<tr><td>14.12.23</td><td>Helsinki Playground Event</td></tr>
+<tr><td>20.12.23</td><td>Helsinki Record Dungeon w/ Miia Laine</td></tr>
+<tr><td>31.12.23</td><td>Komplex NYE w/ Hitoshi & Kléo</td></tr>
+
+        </table>
+    </div>
+  </div>
+</div>
+    </div>
+
+<script>
+/* ---------------- WORK DATA ---------------- */
+
+/* ---------------- DEVICE DETECTION ---------------- */
+
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+/* ---------------- WORK DATA ---------------- */
+
+const works = {
+  1:{
+    imgs:["huomioita-gif2.gif","lolem.gif",,"koira-nocompot.gif","nocompotlippis.JPG","PB-POSTER-JANUARY_25.jpg","tulijasavu.gif","torstai-video.gif","tavas.gif"],
+    text:"Selected recent works!"
+  },
+  2:{
+    imgs:["PYHA_1.JPG","PYHA_2.JPG","tulijasavu.gif","tulijasavu-kansi.png","TS-0.jpg","TS-2.jpg","TS-9.jpg","TS-1.jpg","TS-6.jpg","TS-7.jpg","TS-9.jpg","ornament-origin.jpg"],
+    text:"Tuli ja Savu issue 'Pyhä'. Tuli ja Savu is a prominent Finnish literary magazine focused entirely on poetry. Designed with Emma Tahvanainen. The modular typographic ornament system “The Ivy Combination” is digitized by me. They are originally designed by Vincent Figgins & Sons in London in the mid-19th century and preserved in the typographic journal TYPO."
+  },
+  3:{
+    imgs:["torstai-video.gif","postbarisabar-julkat1.jpg","postbarisabar-julkat2.jpg","postbarisabar.gif","1_postbarisabar.jpg","2_postbarisabar.jpg","Post-Bar-is-a-Bar-kaikki.jpg","postbarisabar-kadulla.jpg"],
+    text:"Design and rolling refreshes for Post Bar is a Bar."
+  },
+  4:{
+    imgs:["huomioita-taivas2.jpg","huomioita-taivas1.jpg","huomioita1.jpg","huomioita2.jpg","huomioita-gif2.gif","Huomioita-valiaikaisista-ja-ikuisista-sommitelmista3.jpg","Huomioita-valiaikaisista-ja-ikuisista-sommitelmista5.jpg","Huomioita-valiaikaisista-ja-ikuisista-sommitelmista6.jpg","Huomioita-valiaikaisista-ja-ikuisista-sommitelmista4.jpg"],
+    text:"Huomioita valiaikaisista ja ikuisista sommitelmista – a short run publication for Uniarts Helsinki BFA exhibition 2025. Designed with Emma Tahvanainen."
+  },
+
+
+
+  5:{
+    video: `
+    <div style="padding:35.56% 0 0 0;position:relative;">
+  <iframe 
+    src="https://player.vimeo.com/video/1157551163?badge=0&autopause=1&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1"
+    frameborder="0"
+    allow="fullscreen; picture-in-picture"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    title="">
+  </iframe>
+</div>
+    `,
+    text:"Serious Fun at the Club — art direction, design and motion. Beautiful 3D illustrations from Samu Pitkänen."
+  },
+  6:{ imgs:["PB-POSTER-JANUARY_25.jpg","pb-poster-ulkona.jpeg","pb-poster-draft2.JPG","pb-poster-draft.JPG","paavo.jpg"], text:"January 2025 poster for Post Bar —  drawing, printed as a risograph and then edited into the final poster. Illustration of my late cat Paavo. Remember to smell flowers!" },
+
+  7:{ imgs:["lehdet.jpg","lolem.gif","Lolemitkassisa.jpg","aukeama03.jpg","aukeama05.jpg","aukeama11.jpg","aukeama14.jpg","aukeama17.jpg"], 
+  text:"Lol'em Ipsum — design, printing, binding. All content is nonsense, serving as a substitute for actual Lorem Ipsum – hence the name. Printed using a risograph printer." },
+
+  8:{ imgs:["nocompot-tarra2.JPG","nocompot-tarra.jpg","nocompot-pinssi.jpg","koira-nocompot.gif","nocompotlippis.JPG","nocompot-lippis2.JPG","nocompot-paita-taka.jpg","nocompot-paita-etu.jpg"], text:"Ongoing design for No Commercial Potential — logo, t-shirts, caps, stickers. NoComPot is an evolving project about community, music and friends." },
+
+  9:{ 
+  video: `
+    <div style="padding:35.56% 0 0 0;position:relative;">
+  <iframe 
+    src="https://player.vimeo.com/video/1041250138?badge=0&autopause=1&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1"
+    frameborder="0"
+    allow="fullscreen; picture-in-picture"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    title="">
+  </iframe>
+</div>
+`, text:"Studies of space and movement – the magazine was created for another need ('Lol'em Ipsum) and the maze is built of videos I've taken. All done with Adobe After Effects." },
+
+  10:{
+    imgs:["page-under-construction.gif", "hiiri.gif"],
+    text:"Type project to be added."
+  }
+};
+
+/* ---------------- SETUP ---------------- */
+
+const canvas = document.getElementById("canvas");
+const text = document.getElementById("text");
+
+let currentWork = 1;
+const totalWorks = Object.keys(works).length;
+
+/* ---------------- WORK SWITCHING ---------------- */
+
+function setWork(n) {
+  if (!works[n]) return;
+  currentWork = n;
+
+  /* stop any playing video */
+  const oldIframe = canvas.querySelector("iframe");
+  if (oldIframe) oldIframe.src = "";
+
+  text.classList.remove("active");
+
+  setTimeout(() => {
+    canvas.innerHTML = "";
+    canvas.classList.remove("grid-multi");
+
+    const work = works[n];
+
+    /* -------- VIDEO WORK -------- */
+    if (work.video) {
+      canvas.innerHTML = work.video;
+
+    /* -------- IMAGE WORK -------- */
+    } else if (work.imgs) {
+      const imgs = work.imgs.slice(0, 12); // allow many images
+
+      /* always use multi-grid */
+      canvas.classList.add("grid-multi");
+
+      imgs.forEach(src => {
+        const img = document.createElement("img");
+        img.src = src;
+
+        /* zoom toggle */
+        img.addEventListener("click", () => {
+          document.querySelectorAll(".canvas img.expanded").forEach(i => {
+            if (i !== img) i.classList.remove("expanded");
+          });
+
+          img.classList.toggle("expanded");
+          document.body.style.overflow = img.classList.contains("expanded") ? "hidden" : "";
+        });
+
+        canvas.appendChild(img);
+        requestAnimationFrame(() => img.classList.add("active"));
+      });
+    }
+
+    /* description (supports links & HTML) */
+    text.innerHTML = work.text;
+    text.classList.add("active");
+
+  }, 200);
+
+  /* update radio buttons */
+  document.querySelectorAll('input[name="work"]').forEach((input, i) => {
+    input.checked = i + 1 === n;
+  });
+}
+
+
+/* initialize */
+setWork(1);
+
+/* ---------------- SECTION SWITCHING ---------------- */
+
+const navButtons = document.querySelectorAll(".nav-btn");
+const sections = document.querySelectorAll(".section");
+
+function showSection(id) {
+  navButtons.forEach(b => b.classList.remove("active"));
+  sections.forEach(s => s.classList.remove("active"));
+
+  document.querySelector(`[data-section="${id}"]`).classList.add("active");
+  document.getElementById(id).classList.add("active");
+}
+
+navButtons.forEach(btn => {
+  btn.addEventListener("click", () => showSection(btn.dataset.section));
+});
+
+/* ---------------- KEYBOARD SHORTCUTS ---------------- */
+
+document.addEventListener("keydown", e => {
+  const key = e.key.toLowerCase();
+
+  if (key === "w") { showSection("works"); return; }
+  if (key === "i") { showSection("info"); return; }
+  if (key === "d") { showSection("djing"); return; }
+
+  if (!document.getElementById("works").classList.contains("active")) return;
+
+  if (e.key === "ArrowRight") {
+    setWork(currentWork === totalWorks ? 1 : currentWork + 1);
+  }
+
+  if (e.key === "ArrowLeft") {
+    setWork(currentWork === 1 ? totalWorks : currentWork - 1);
+  }
+
+  /* ESC closes zoom */
+  if (e.key === "Escape") {
+    const expanded = document.querySelector(".canvas img.expanded");
+    if (expanded) {
+      expanded.classList.remove("expanded");
+      document.body.style.overflow = "";
+    }
+  }
+});
+
+/* ---------------- SWIPE SUPPORT ---------------- */
+
+let touchStartX = 0;
+
+canvas.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+canvas.addEventListener("touchend", e => {
+  const diff = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(diff) < 40) return;
+
+  if (diff < 0) {
+    setWork(currentWork === totalWorks ? 1 : currentWork + 1);
+  } else {
+    setWork(currentWork === 1 ? totalWorks : currentWork - 1);
+  }
+});
+
+/* ---------------- TIMELINE TOGGLE ---------------- */
+
+const toggleTimeline = document.getElementById("toggleTimeline");
+const timelinePanel = document.getElementById("timelinePanel");
+const timelineArrow = document.getElementById("timelineArrow");
+
+if (toggleTimeline && timelinePanel && timelineArrow) {
+  toggleTimeline.addEventListener("click", () => {
+    const isCollapsed = timelinePanel.classList.toggle("collapsed");
+    timelineArrow.textContent = isCollapsed ? "▼" : "▲";
+  });
+}
+
+</script>
+
 
 </body>
-
 </html>
