@@ -57,6 +57,14 @@
 
   /* ---------- TOP NAV ---------- */
 
+button,
+button:visited,
+button:active {
+  color: #000;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
   .top-nav {
   margin: 0px 0 18px;
   border-bottom: 0.5px solid #000;
@@ -70,6 +78,7 @@
   font-size: 18px;
   padding: 6px 14px;
   margin-right: 24px;
+    color: #000;
   cursor: pointer;
 }
 
@@ -80,8 +89,9 @@
 
 /* active = like pressed / selected */
 .top-nav button.active {
-  background: #6666;
+ background: #ccc;
   border-color: #000;
+  color: #000;
 }
 
   /* ---------- SECTIONS ---------- */
@@ -186,7 +196,7 @@
 
 @media (max-width: 480px) {
   .timeline-block {
-    padding: 0 20px;
+    padding: 0;
   }
 }
 
