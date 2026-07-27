@@ -334,8 +334,6 @@ button:active {
     <label><input type="radio" name="work" onclick="setWork(6)"> 006</label>
     <label><input type="radio" name="work" onclick="setWork(7)"> 007</label>
     <label><input type="radio" name="work" onclick="setWork(8)"> 008</label>
-    <label><input type="radio" name="work" onclick="setWork(9)"> 009</label>
-    <label><input type="radio" name="work" onclick="setWork(10)"> 010</label>
   </div>
 
   <!-- Work description -->
@@ -426,9 +424,17 @@ In addition to commercial work, he is also working on a new community platform c
         <table class="timeline-table">
 <!-- UPCOMING -->
 <tr><td colspan="2" style="font-weight:bold; border-bottom:1px solid #000; padding-top:10px;">2026</td></tr>
-<tr><td>18.07.26</td><td>Fun at the Club with Eden Burns & Hitoshi</td></tr>
+<tr><td>15.08.26</td><td>Flow Festival Brunch, Tanner</td></tr>
+<tr><td>08.08.26</td><td>500 Kaveria, Alkuviini</td></tr>
+<tr><td>05.08.26</td><td>Café del Bar, Post Bar w/ Nea2k</td></tr>
+<tr><td>01.08.26</td><td>Kaupungin Äänet, Lahti</td></tr>
+<tr><td>18.07.26</td><td>Fun at the Club with Eden Burns, Amelia Holt & Hitoshi</td></tr>
+<tr><td>17.07.26</td><td>Lippa</td></tr>
+<tr><td>11.07.26</td><td>Wedding in Tuscany w/ Hitoshi</td></tr>
 <tr><td>19.06.26</td><td>Solstice Festival w/ Hitoshi</td></tr>
-<tr><td>30.05.26</td><td>Samheads 20 Years, Post Bar</td></tr>
+<tr><td>05.06.26</td><td>Lippa</td></tr>
+<tr><td>30.05.26</td><td>Sameheads 20 Years, Post Bar</td></tr>
+<tr><td>22.05.26</td><td>Alkuviini</td></tr>
 <tr><td>12.05.26</td><td>Operator Radio</td></tr>
 <tr><td>07.05.26</td><td>Export Rotterdam with Iivari Mikkonen & co.</td></tr>
 <tr><td>01.05.26</td><td>Kaiku MAY DAY</td></tr>
@@ -619,30 +625,14 @@ const works = {
     text:"Huomioita valiaikaisista ja ikuisista sommitelmista – a short run publication for Uniarts Helsinki BFA exhibition 2025. Designed with Emma Tahvanainen."
   },
 
+  5:{ imgs:["PB-POSTER-JANUARY_25.jpg","pb-poster-ulkona.jpg","pb-poster-draft2.JPG","pb-poster-draft.JPG","paavo.jpg"], text:"January 2025 poster for Post Bar —  drawing, printed as a risograph and then edited into the final poster. Illustration of my late cat Paavo. Remember to smell flowers!" },
 
-
-  5:{
-    video: `
-    <div style="padding:35.56% 0 0 0;position:relative;">
-  <iframe 
-    src="https://player.vimeo.com/video/1157551163?badge=0&autopause=1&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1"
-    frameborder="0"
-    allow="fullscreen; picture-in-picture"
-    style="position:absolute;top:0;left:0;width:100%;height:100%;"
-    title="">
-  </iframe>
-</div>
-    `,
-    text:"Serious Fun at the Club — art direction, design and motion. Beautiful 3D illustrations from Samu Pitkänen."
-  },
-  6:{ imgs:["PB-POSTER-JANUARY_25.jpg","pb-poster-ulkona.jpg","pb-poster-draft2.JPG","pb-poster-draft.JPG","paavo.jpg"], text:"January 2025 poster for Post Bar —  drawing, printed as a risograph and then edited into the final poster. Illustration of my late cat Paavo. Remember to smell flowers!" },
-
-  7:{ imgs:["lehdet.jpg","lolem.gif","Lolemitkassisa.jpg","aukeama03.jpg","aukeama05.jpg","aukeama11.jpg","aukeama14.jpg","aukeama17.jpg"], 
+  6:{ imgs:["lehdet.jpg","lolem.gif","Lolemitkassisa.jpg","aukeama03.jpg","aukeama05.jpg","aukeama11.jpg","aukeama14.jpg","aukeama17.jpg"], 
   text:"Lol'em Ipsum — design, printing, binding. All content is nonsense, serving as a substitute for actual Lorem Ipsum – hence the name. Printed using a risograph printer." },
 
-  8:{ imgs:["nocompot-tarra2.JPG","nocompot-tarra.jpg","nocompot-pinssi.jpg","koira-nocompot.gif","nocompotlippis.JPG","nocompot-lippis2.JPG","nocompot-paita-taka.jpg","nocompot-paita-etu.jpg"], text:"Ongoing design for No Commercial Potential — logo, t-shirts, caps, stickers. NoComPot is an evolving project about community, music and friends." },
+  7:{ imgs:["nocompot-tarra2.JPG","nocompot-tarra.jpg","nocompot-pinssi.jpg","koira-nocompot.gif","nocompotlippis.JPG","nocompot-lippis2.JPG","nocompot-paita-taka.jpg","nocompot-paita-etu.jpg"], text:"Ongoing design for No Commercial Potential — logo, t-shirts, caps, stickers. NoComPot is an evolving project about community, music and friends." },
 
-  9:{ 
+  8:{ 
   video: `
     <div style="padding:35.56% 0 0 0;position:relative;">
   <iframe 
@@ -654,12 +644,6 @@ const works = {
   </iframe>
 </div>
 `, text:"Studies of space and movement – the magazine was created for another need ('Lol'em Ipsum) and the maze is built of videos I've taken. All done with Adobe After Effects." },
-
-  10:{
-    imgs:["page-under-construction.gif", "hiiri.gif"],
-    text:"Type project to be added."
-  }
-};
 
 /* ---------------- SETUP ---------------- */
 
